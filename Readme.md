@@ -1,39 +1,28 @@
-# Mission 2
+# Mission 3
 
-## Part 0
+## Part 0-2
 
-[Link to video] https://drive.google.com/file/d/1QP2W1T3Q7-IZylPcyA7enEgrNl22Sbg4/view?usp=drive_link
+[Link to video] https://drive.google.com/file/d/1r728e3oVs9f-AWUG0_mrV2YW9bd6obqE/view?usp=sharing
+- Task 1
+> https://buildship.app/remix/12556d2d-5622-4914-a31a-d2a57713c49d
+- Task 2
+> https://buildship.app/remix/5a029b0a-4ec0-4656-bc8c-b72cd60ed7f1
 
-## Part1
+## Part3
+- 1. получить список юзернеймов пользователей
+<!--select * from users -->
 
-- Вопрос 1	 
- Зачем нужен SSH?
-> Ответ  
-SSH (Secure Shell) нужен для безопасного удаленного доступа к серверам. Он шифрует соединение, что позволяет безопасно управлять сервером, выполнять команды и передавать данные. Это особенно важно, когда сервер находится в другом месте, а вам нужен доступ к нему через интернет.
-
-- Вопрос 2
-Как добавить SSH-ключ Васи на сервер?
-	 
-> Ответ  
-Чтобы Вася мог подключиться к серверу, его публичный ключ нужно добавить в файл ~/.ssh/authorized_keys на сервере. Для этого:
-Открыть файл ~/.ssh/authorized_keys (если его нет — создайте).
-Добавить строку с публичным ключом Васи и сохраните файл.
-Теперь Вася сможет подключиться через SSH с использованием своего приватного ключа.
-
-- Вопрос 3
- Что такое long polling и webhooks?
-	 
-> Ответ  
-Long polling — это техника, при которой клиент отправляет запрос на сервер и "ждет", пока появится новый ответ. Если данных нет, сервер удерживает соединение открытым до тех пор, пока не появятся данные.
-Webhooks — это способ, при котором сервер сам отправляет данные клиенту, когда происходит определенное событие. Клиент заранее указывает серверу URL, на который отправлять данные.
-Оба метода используются для обработки обновлений в реальном времени, но webhooks экономят больше ресурсов, так как не требуют постоянных запросов.
-
-- Вопрос 4
-Что такое issues на GitHub и для чего они нужны?
-	 
-> Ответ  
-Issues на GitHub — это система для отслеживания задач, ошибок, предложений и обсуждений по проекту. Они позволяют разработчикам и пользователям сообщать об ошибках, предлагать улучшения или отслеживать прогресс работы. Это важный инструмент для управления проектами с открытым исходным кодом и эффективного взаимодействия между командой разработчиков и сообществом.
-- Вопрос 5	 
-Как добавить пустую папку в Git?
-> Ответ  
-Git не отслеживает пустые директории, но есть обходной путь. Чтобы сохранить пустую папку в репозитории, можно создать в ней файл-заглушку, например, .gitkeep. Этот файл позволит Git отслеживать папку, даже если она пока пуста
+- 2. получить кол-во отправленных сообщений каждым пользователем:
+    username - number of sent messages
+<!-- SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM  users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username;  -->
+- 3. Получить пользователя с самым большим кол-вом полученных сообщений и само количество
+    username - number of received messages
+<!-- SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username ORDER by message_count DESC Limit 1;-->
+- 4. Получить среднее кол-во сообщений, отправленное каждым пользователем
+<!-- SELECT AVG (message_count) AS average_messages FROM
+(
+SELECT users.id, COUNT (messages.id) AS message_count FROM users
+LEFT JOIN messages ON users.id = messages.from    
+GROUP BY users.id
+) 
+AS user_message_counts;-->
