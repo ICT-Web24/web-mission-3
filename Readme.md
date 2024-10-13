@@ -9,20 +9,27 @@
 > https://buildship.app/remix/5a029b0a-4ec0-4656-bc8c-b72cd60ed7f1
 
 ## Part3
-- 1. получить список юзернеймов пользователей
-<!--select * from users -->
-
-- 2. получить кол-во отправленных сообщений каждым пользователем:
+- получить список юзернеймов пользователей
+  ```
+  select * from users
+  ```
+-получить кол-во отправленных сообщений каждым пользователем:
     username - number of sent messages
-<!-- SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM  users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username;  -->
-- 3. Получить пользователя с самым большим кол-вом полученных сообщений и само количество
+```
+SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM  users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username;
+```
+-  Получить пользователя с самым большим кол-вом полученных сообщений и само количество
     username - number of received messages
-<!-- SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username ORDER by message_count DESC Limit 1;-->
-- 4. Получить среднее кол-во сообщений, отправленное каждым пользователем
-<!-- SELECT AVG (message_count) AS average_messages FROM
+```
+SELECT users.id,users.username, COUNT(messages.id) AS message_count FROM users LEFT JOIN messages ON users.id = messages.from GROUP BY users.id, users.username ORDER by message_count DESC Limit 1;
+```
+-  Получить среднее кол-во сообщений, отправленное каждым пользователем
+ ```
+SELECT AVG (message_count) AS average_messages FROM
 (
 SELECT users.id, COUNT (messages.id) AS message_count FROM users
 LEFT JOIN messages ON users.id = messages.from    
 GROUP BY users.id
 ) 
-AS user_message_counts;-->
+AS user_message_counts;
+```
