@@ -2,7 +2,7 @@
 
 ## Part 0-2
 
-### ScrinCast
+### ScreenCast
 > https://drive.google.com/file/d/1r728e3oVs9f-AWUG0_mrV2YW9bd6obqE/view?usp=sharing
 - Task 1
 > https://buildship.app/remix/12556d2d-5622-4914-a31a-d2a57713c49d
