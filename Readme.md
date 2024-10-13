@@ -12,7 +12,7 @@
 ## Part3
 - Получить список юзернеймов пользователей
   ```
-  select * from users
+  select users.username from users
   ```
 - Получить кол-во отправленных сообщений каждым пользователем:
     username - number of sent messages
